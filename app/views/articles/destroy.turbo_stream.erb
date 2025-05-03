@@ -1,0 +1,3 @@
+
+<%= turbo_stream.remove "article_#{@article.id}" %>
+<%= turbo_stream.update "flash", partial: "shared/flash", locals: { notice: "Artículo eliminado" } %>
