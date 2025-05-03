@@ -18,20 +18,18 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
+
+    <%= javascript_include_tag "application", "data-turbo-track" => true %>
     
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
-  
   </head>
 
   <body>
-  <% flash.each do |name,msg| %>
-    <ul>
-      <li> <%= msg %> </li>      
-    </ul>
-  <% end %>
+    <% flash.each do |name,msg| %>
+      <ul>
+        <li> <%= msg %> </li>      
+      </ul>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
