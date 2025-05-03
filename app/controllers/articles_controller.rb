@@ -4,8 +4,13 @@ def index
     @articles = Article.all
 end
 
+
 def new
     @article = Article.new
+end
+
+def edit
+    @article = Article.find(params[:id])
 end
 
 def create
@@ -15,6 +20,16 @@ def create
       redirect_to @article  # or wherever you want to redirect
     else
       render 'new'
+    end
+end
+
+def update
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+        flash[:notice] = "Article was successfully updated"
+        redirect_to @article
+    else
+        render 'edit'
     end
 end
 
