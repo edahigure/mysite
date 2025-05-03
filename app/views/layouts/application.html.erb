@@ -18,6 +18,7 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
+
     <%= javascript_include_tag "application", "data-turbo-track" => true %>
     
   </head>
@@ -28,6 +29,7 @@
         <li> <%= msg %> </li>      
       </ul>
     <% end %>
+
     <%= yield %>
   </body>
 </html>
