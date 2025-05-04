@@ -61,3 +61,4 @@ group :test do
   gem "selenium-webdriver"
 end
 gem "importmap-rails"
+gem "hotwire-rails"

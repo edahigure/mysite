@@ -9,7 +9,8 @@
 <ul>
 <% end %>
 
-<%= form_for @article do |f| %>
+
+<%= form_for( @article, data: { turbo: false }) do |f| %>
     <p>
     <%= f.label :title %> <br/>
     <%= f.text_field :title %>

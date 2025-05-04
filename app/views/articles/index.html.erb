@@ -15,6 +15,14 @@
         <td> <%= article.description %> </td>
         <td> <%= link_to 'Edit', edit_article_path(article) %>  </td>
         <td> <%= link_to 'Show', article %>  </td>
+        <td> 
+        
+        <%= button_to "Eliminar", article_path(article), 
+        method: :delete, 
+        form: { data: { turbo_confirm: "¿Estás seguro?" } }, 
+        turbo_frame: "_top" %> 
+
+        </td>
 
     </tr>
     <%end%>

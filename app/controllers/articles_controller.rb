@@ -36,6 +36,12 @@ def show
     @article = Article.find(params[:id])
 end
 
+def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to articles_path, notice: "Artículo eliminado correctamente."
+end
+
 private 
 def article_params
     params.require(:article).permit(:title, :description)
