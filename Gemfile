@@ -4,7 +4,6 @@ source "https://rubygems.org"
 gem "rails", "~> 8.0.2"
 
 gem 'sassc-rails', '>= 2.1.0'
-gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
@@ -14,7 +13,6 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
-gem "jsbundling-rails"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
