@@ -2,6 +2,11 @@ source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.2"
+
+gem 'sassc-rails', '>= 2.1.0'
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'jquery-rails'
+
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use postgresql as the database for Active Record
