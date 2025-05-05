@@ -4,6 +4,7 @@
 set -o errexit
 
 bundle install
+bundle exec rails assets:precompile
 
 
 # If you have a paid instance type, we recommend moving
