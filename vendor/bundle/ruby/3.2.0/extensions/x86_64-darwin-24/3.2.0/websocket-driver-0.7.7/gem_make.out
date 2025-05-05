@@ -1,0 +1,19 @@
+current directory: /Users/edahi/Desktop/works/mysite/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.7/ext/websocket-driver
+/Users/edahi/.rbenv/versions/3.2.8/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/edahi/Desktop/works/mysite/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.7/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20250504-52252-ree3q3 sitelibdir\=./.gem.20250504-52252-ree3q3 clean
+
+current directory: /Users/edahi/Desktop/works/mysite/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.7/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20250504-52252-ree3q3 sitelibdir\=./.gem.20250504-52252-ree3q3
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+
+current directory: /Users/edahi/Desktop/works/mysite/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.7/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20250504-52252-ree3q3 sitelibdir\=./.gem.20250504-52252-ree3q3 install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20250504-52252-ree3q3
+
+current directory: /Users/edahi/Desktop/works/mysite/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.7/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20250504-52252-ree3q3 sitelibdir\=./.gem.20250504-52252-ree3q3 clean
