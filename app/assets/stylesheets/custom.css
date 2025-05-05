@@ -31,3 +31,12 @@
 .center {
   text-align:center;
 }
+
+.jumbotron {
+  background-image: url('pizza.jpg') !important;
+  text-transform: uppercase;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 300px;
+}
