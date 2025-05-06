@@ -46,6 +46,8 @@
   text-transform: uppercase;
 }
 
+
+
 footer {
   margin-top: 45px;
   padding-top: 5px;
@@ -61,12 +63,37 @@ footer small{
   float: left;
 }
 
-float ul {
+footer ul {
   float: right;
   list-style: none;
 }
 
-float ul li {
+footer ul li {
   float: left;
   margin-left: 15px;
+}
+
+.article-actions {
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid #eaeaea;
+  padding-top: 5px;
+}
+
+.article-actions a,
+.article-actions form {
+  flex: 1;
+}
+
+.article-actions form {
+  display: inline;
+}
+
+.article-actions .btn {
+  width: 100%;
+  text-align: center;
+}
+
+.description {
+  margin-top: 0;
 }
