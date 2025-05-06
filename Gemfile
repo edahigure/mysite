@@ -69,3 +69,4 @@ gem "importmap-rails"
 gem "hotwire-rails"
 
 gem "bootstrap", "~> 5.3"
+gem "rails-controller-testing"
