@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
-
+before_action :reset_article, only: [:index]
 def index 
-    @articles = Article.all
+    @articles = Article.paginate(page: params[:page],per_page: 5)
 end
 
 def new
@@ -47,6 +47,10 @@ end
 private 
 def article_params
     params.require(:article).permit(:title, :description)
+end
+
+def reset_article
+    @article = nil
 end
 
 

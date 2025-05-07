@@ -1,3 +1,17 @@
 <h1 align="center"> Listing all articles </h1>
+<div class="my-4 d-flex justify-content-center">
+  <%= will_paginate @articles,
+        renderer: WillPaginate::ActionView::BootstrapLinkRenderer,
+        list_classes: %w[pagination mb-0],
+        previous_label: '&laquo;',
+        next_label: '&raquo;',
+        inner_window: 1,  # Número de páginas alrededor de la actual
+        outer_window: 1,  # Número de páginas en los extremos
+        link_options: { class: 'page-link' } %>
+</div>
+
 <%= render 'article', obj: @articles %>
 
+<div align="center">
+    <%= will_paginate %>
+</div>
