@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   get 'pages/about', to: 'pages#about'
   resources :categories, except: [:destroy]
 
+  get 'signup', to: 'users#new'
+  resources :users, except: [:new]
+
 end
