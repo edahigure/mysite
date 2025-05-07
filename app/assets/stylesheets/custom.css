@@ -120,3 +120,8 @@ footer ul li {
   border-radius: 10px;
   margin-bottom: 20px; 
 }
+
+.article-meta-details {
+  border-top: 1px solid #eaeaea;
+  margin-top: 15px;
+}
