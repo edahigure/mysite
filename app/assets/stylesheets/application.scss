@@ -1,15 +1,69 @@
 // Sassy
+@import "bootstrap";
 
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px; /* Espacio entre elementos */
+  padding: 20px 0;
 
-.delete-button {
-    background: none;
-    border: none;
-    color: #d00;
-    text-decoration: underline;
-    cursor: pointer;
-    padding: 0;
-    font: inherit;
+  /* Estilo para TODOS los elementos (números + flechas) */
+  .pagination-link, 
+  .pagination-nav,
+  .current,
+  .disabled {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
   }
+
+  /* Estilo para los números de página */
+  .pagination-link {
+    color: #333;
+    background: white;
+    border: 2px solid #ddd;
+
+    &:hover {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Estilo para las flechas de navegación */
+  .pagination-nav {
+    color: white !important;
+    background: #2e6ab1;
+    border: 2px solid #1a4f8b;
+
+    &:hover {
+      background: #1a4f8b;
+    }
+  }
+
+  /* Estilo para la página actual */
+  .current {
+    color: white !important;
+    background: #2e6ab1;
+    border: 2px solid #1a4f8b;
+  }
+
+  /* Estilo para elementos deshabilitados */
+  .disabled {
+    color: #aaa !important;
+    background: #f5f5f5;
+    border: 2px solid #ddd;
+    cursor: not-allowed;
+  }
+}
+  
 
 
 
