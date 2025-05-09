@@ -1,3 +1,10 @@
 <h1 align="center"> Listing all articles </h1>
+<div class="d-flex justify-content-center my-4"> 
+<%=render 'paginator'%>
+</div>
 <%= render 'article', obj: @articles %>
+
+<div class="d-flex justify-content-center"> 
+<%=render 'paginator'%>
+</div>
 

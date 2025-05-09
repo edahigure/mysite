@@ -8,4 +8,26 @@
   font: inherit;
 }
 
-
+.pagination {
+  display: flex;
+  gap: 5px;
+  margin-top: 20px;
+}
+.page-link {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  color: #333;
+}
+.page-link.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+.page-link.disabled {
+  opacity: 0.5;
+  pointer-events: none;  /* Evita que sea clickeable */
+  cursor: default;       /* Cambia el cursor a normal (no "manita") */
+  text-decoration: none; /* Opcional: quita el subrayado */
+  color: #6c757d;        /* Color gris para indicar inactividad */
+}

@@ -1,0 +1,13 @@
+<div class="pagination">
+  <% if params[:page].to_i > 1 %>
+    <%= link_to "← Anterior", articles_path(page: params[:page].to_i - 1), class: "page-link" %>
+  <% end %>
+
+  <% (1..@total_pages).each do |page| %>
+    <%= link_to page, articles_path(page: page), class: "page-link #{'active' if params[:page].to_i == page}" %>
+  <% end %>
+
+  <% if params[:page].to_i < @total_pages %>
+    <%= link_to "Siguiente →", articles_path(page: params[:page].to_i + 1), class: "page-link" %>
+  <% end %>
+</div>

@@ -1,7 +1,11 @@
 class ArticlesController < ApplicationController
 
 def index 
-    @articles = Article.all
+    page = params[:page] || 1  # Si no hay parámetro, usa página 1
+    per_page = 4               # Artículos por página (ajústalo)
+    @articles = Article.order(created_at: :desc)
+    @total_pages = (@articles.count.to_f / per_page).ceil  # Calcula el total de páginas
+    @articles = @articles.offset((page.to_i - 1) * per_page).limit(per_page)
 end
 
 def new
