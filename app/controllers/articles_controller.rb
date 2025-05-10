@@ -1,57 +1,68 @@
 class ArticlesController < ApplicationController
 
-def index 
-    page = params[:page] || 1  # Si no hay parámetro, usa página 1
-    per_page = 4               # Artículos por página (ajústalo)
-    @articles = Article.order(created_at: :desc)
-    @total_pages = (@articles.count.to_f / per_page).ceil  # Calcula el total de páginas
-    @articles = @articles.offset((page.to_i - 1) * per_page).limit(per_page)
-end
-
-def new
-    @article = Article.new
-end
-
-def edit
-    @article = Article.find(params[:id])
-end
-
-def create
-    @article = Article.new(article_params)
-    @article.user = User.first
-    if @article.save
-      flash[:success] = "Article was successfully created"
-      redirect_to @article  # or wherever you want to redirect
-    else
-      render 'new'
+    before_action :set_article, only: [:edit, :update, :show, :destroy]
+    before_action :require_user, except: [:index, :show]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
+    def index 
+        page = params[:page] || 1  # Si no hay parámetro, usa página 1
+        per_page = 4               # Artículos por página (ajústalo)
+        @articles = Article.order(created_at: :desc)
+        @total_pages = (@articles.count.to_f / per_page).ceil  # Calcula el total de páginas
+        @articles = @articles.offset((page.to_i - 1) * per_page).limit(per_page)
     end
-end
 
-def update
-    @article = Article.find(params[:id])
-    if @article.update(article_params)
-        flash[:success] = "Article was successfully updated"
-        redirect_to @article
-    else
-        render 'edit'
+    def new
+        @article = Article.new
     end
-end
 
-def show
-    @article = Article.find(params[:id])
-end
+    def edit
 
-def destroy
-    @article = Article.find(params[:id])
-    @article.destroy
-    flash[:danger] = "Article was successfully destroyed"
-    redirect_to articles_path
-end
+    end
 
-private 
-def article_params
-    params.require(:article).permit(:title, :description)
-end
+    def create
+        @article = Article.new(article_params)
+        @article.user = User.first
+        if @article.save
+        flash[:success] = "Article was successfully created"
+        redirect_to @article  # or wherever you want to redirect
+        else
+        render 'new'
+        end
+    end
 
+    def update
+        if @article.update(article_params)
+            flash[:success] = "Article was successfully updated"
+            redirect_to @article
+        else
+            render 'edit'
+        end
+    end
+
+    def show    
+    end
+
+    def destroy
+        @article = Article.find(params[:id])
+        @article.destroy
+        flash[:danger] = "Article was successfully destroyed"
+        redirect_to articles_path
+    end
+
+    private 
+    def article_params
+        params.require(:article).permit(:title, :description)
+    end
+
+    def set_article
+        @article = Article.find(params[:id])
+    end
+
+    def require_same_user
+        if current_user != @article.user
+            flash[:danger] = "you can only edit or delete your own articles"
+            redirect_to root_path 
+        end
+    end
 
 end
