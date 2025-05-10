@@ -32,7 +32,11 @@ class UsersController < ApplicationController
     end
 
     def index
-        @users = User.all
+        page = params[:page] || 1  # Si no hay parámetro, usa página 1
+        per_page = 2               # Artículos por página (ajústalo)
+        @users = User.order(created_at: :desc)
+        @total_pages = (@users.count.to_f / per_page).ceil  # Calcula el total de páginas
+        @users = @users.offset((page.to_i - 1) * per_page).limit(per_page)
     end
 
     private
@@ -45,3 +49,7 @@ class UsersController < ApplicationController
     end
 
 end
+
+
+
+ 
