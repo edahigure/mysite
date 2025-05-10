@@ -1,7 +1,7 @@
 <div class="pagination">
   <% if params[:page].to_i > 1 %>
     <%= link_to "← Anterior", 
-          articles_path(page: params[:page].to_i - 1), 
+          users_path(page: params[:page].to_i - 1), 
           class: "page-link",
           data: { turbo: "false" } %>
   <% end %>
@@ -15,7 +15,7 @@
 
   <% if params[:page].to_i < @total_pages %>
     <%= link_to "Siguiente →", 
-          articles_path(page: params[:page].to_i + 1), 
+          users_path(page: params[:page].to_i + 1), 
           class: "page-link",
           data: { turbo: "false" } %>
   <% end %>

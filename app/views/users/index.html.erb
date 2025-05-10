@@ -11,12 +11,23 @@
                         <%= link_to user.username, user_path(user) %>
                     </li>
                     <li><small><%= pluralize(user.articles.count,"article") if user.articles %> </small></li>
+                    <% if logged_in? and current_user.admin? %>
+                        <li> 
+                            <%= button_to "Delete", user_path(user), 
+                            method: :delete, 
+                            form: { data: { turbo_confirm: "¿Estás seguro?" } }, 
+                            turbo_frame: "_top",
+                            turbo_action: "advance",
+                            class: "btn btn-xs btn-danger" %> 
+                         </li>
+                    <% end %>
                 </div>
             </div>
         </ul>
     <%end%>
 </div>
 
+
 <div class="d-flex justify-content-center"> 
-<%=render 'paginator'%>
+<%=render 'paginator_user'%>
 </div>
