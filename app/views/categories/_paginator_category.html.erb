@@ -1,0 +1,22 @@
+<div class="pagination">
+  <% if params[:page].to_i > 1 %>
+    <%= link_to "← Anterior", 
+          categories_path(page: params[:page].to_i - 1), 
+          class: "page-link",
+          data: { turbo: "false" } %>
+  <% end %>
+
+  <% (1..@total_pages).each do |page| %>
+    <%= link_to page, 
+          categories_path(page: page), 
+          class: "page-link #{'active' if params[:page].to_i == page}",
+          data: { turbo: "false" } %>
+  <% end %>
+
+  <% if params[:page].to_i < @total_pages %>
+    <%= link_to "Siguiente →", 
+          categories_path(page: params[:page].to_i + 1), 
+          class: "page-link",
+          data: { turbo: "false" } %>
+  <% end %>
+</div>

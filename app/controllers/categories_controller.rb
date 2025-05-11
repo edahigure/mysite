@@ -1,6 +1,11 @@
 class CategoriesController < ApplicationController
     def index
-        @categories = Category.all
+        page = params[:page] || 1  # Si no hay parámetro, usa página 1
+        per_page = 4               # Artículos por página (ajústalo)
+        @categories = Category.order(created_at: :desc)
+        @total_pages = (@categories.count.to_f / per_page).ceil  # Calcula el total de páginas
+        @categories = @categories.offset((page.to_i - 1) * per_page).limit(per_page)
+ 
     end
     def new
         @category = Category.new
@@ -13,7 +18,7 @@ class CategoriesController < ApplicationController
             flash[:success] = "Category was created successfully"
             redirect_to categories_path
         else
-            render 'new'
+            render :new, status: :unprocessable_entity 
         end
     end
 
