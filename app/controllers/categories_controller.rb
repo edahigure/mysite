@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+
+    before_action :require_admin, except: [:index, :show]
     def index
         page = params[:page] || 1  # Si no hay parámetro, usa página 1
         per_page = 4               # Artículos por página (ajústalo)
@@ -18,7 +20,7 @@ class CategoriesController < ApplicationController
             flash[:success] = "Category was created successfully"
             redirect_to categories_path
         else
-            render :new, status: :unprocessable_entity 
+            render 'new'
         end
     end
 
@@ -26,6 +28,13 @@ class CategoriesController < ApplicationController
 
     def category_params
         params.require(:category).permit(:name)
+    end
+
+    def require_admin
+        if !logged_in? || (logged_in? and !current_user.admin?)
+            flash[:danger] = "Only admins can perform that action"
+            redirect_to categories_path
+        end
     end
 
 end

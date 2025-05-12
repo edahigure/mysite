@@ -5,16 +5,27 @@ class SessionsController < ApplicationController
     end
 
     def create
-        user= User.find_by(email: params[:email].downcase)
-        if user && user.authenticate(params[:password])
-            session[:user_id] = user.id
-            flash[:success] = "You have succesfully logged in"
-            redirect_to user_path(user)
-        else
-            flash.now[:danger] = "there was something wrong with your login information"
-            render 'new'
+        # Asegúrate de recibir los parámetros en el nivel raíz
+        email = params[:email]
+        password = params[:password]
+      
+        # Validación básica
+        if email.blank? || password.blank?
+          flash.now[:danger] = "Email and password are required"
+          return render 'new'
         end
-    end
+      
+        user = User.find_by(email: email.downcase.strip)
+        
+        if user&.authenticate(password)
+          session[:user_id] = user.id
+          flash[:success] = "Logged in successfully"
+          redirect_to user_path(user)
+        else
+          flash.now[:danger] = "Invalid credentials"
+          render 'new'
+        end
+      end
 
     def destroy
         session[:user_id] = nil

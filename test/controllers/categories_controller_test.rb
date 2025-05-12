@@ -5,19 +5,33 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
     def setup
         @category = Category.create(name: "sports")
-    end
+        @user = User.create!(
+          username: "edahi",
+          email: "test@example.com",  # Obligatorio
+          password: "password123",        
+          admin: true
+        )
+      end
 
     test "should get categories index" do
         get categories_path
         assert_response :success
     end
     test "should get new" do
+        sign_in_as(@user)
         get new_category_path
         assert_response :success
     end
     test "should get show" do 
         get category_path(@category) 
         assert_response :success
+    end
+
+    test "should redirect create when admin is not logged in" do 
+        assert_no_difference 'Category.count' do
+            post categories_path, params: {category: {name: "sports"}}            
+        end
+        assert_redirected_to categories_path
     end
 
 end

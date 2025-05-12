@@ -12,4 +12,14 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
   end
+  
+
+end
+
+def sign_in_as(user, password = 'password123')
+  raise "User must have an email" if user.email.blank?
+  post login_path, params: { 
+    email: user.email,  # Sin .downcase aquí
+    password: password
+  }
 end
